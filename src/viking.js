@@ -26,6 +26,7 @@ class Viking extends Soldier {
     return `${this.name} has received ${damage} points of damage`;
     } else return `${this.name} has died in act of combat`;
   }
+
   battleCry() {
     return 'Odin Owns You All!'
   }
@@ -33,7 +34,6 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
-
 
   receiveDamage(damage){
     this.health -= damage;
@@ -62,7 +62,6 @@ class War {
   }
 
   vikingAttack(){
-
     let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
     let randomViking = this.vikingArmy[randomVikingIndex];
     let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
@@ -92,15 +91,10 @@ class War {
 }
 
 showStatus(){
-    if (this.saxonArmy.length === 0) {
-      return `Vikings have won the war of the century!`;
-      } else if (this.vikingArmy.length  === 0) {
-      return `Saxons have fought for their lives and survived another day...`;
-      } else if (this.vikingArmy.length  >= 1 && this.saxonArmy.length >= 1) {
-      return `Vikings and Saxons are still in the thick of battle.`;
-      }
+    if (!this.saxonArmy.length) return `Vikings have won the war of the century!`;
+    if (!this.vikingArmy.length) return `Saxons have fought for their lives and survived another day...`;
+    if (this.vikingArmy.length && this.saxonArmy.length) return `Vikings and Saxons are still in the thick of battle.`;
   }
-}
 
 
 
